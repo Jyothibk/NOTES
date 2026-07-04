@@ -1,0 +1,472 @@
+
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.topic-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);font-size:13px;cursor:pointer;transition:all .15s}
+.topic-btn.active{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC;font-weight:500}
+.q-item{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:10px;overflow:hidden}
+.q-header{padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--color-background-primary)}
+.q-header:hover{background:var(--color-background-secondary)}
+.q-num{font-size:12px;font-weight:500;color:#534AB7;background:#EEEDFE;padding:2px 8px;border-radius:12px;margin-right:10px;flex-shrink:0}
+.q-text{font-size:14px;color:var(--color-text-primary);flex:1}
+.q-arrow{font-size:16px;color:var(--color-text-secondary);transition:transform .2s;flex-shrink:0}
+.q-body{display:none;padding:14px 16px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary)}
+.q-body.open{display:block}
+.q-answer{font-size:13px;color:var(--color-text-primary);line-height:1.7;margin-bottom:8px}
+pre{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 14px;font-size:12px;font-family:var(--font-mono);overflow-x:auto;margin:6px 0 0;line-height:1.6}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:12px;margin-bottom:6px}
+.badge-green{background:#EAF3DE;color:#27500A}
+.badge-red{background:#FCEBEB;color:#791F1F}
+.badge-amber{background:#FAEEDA;color:#633806}
+</style>
+
+<h2 class="sr-only">Java OOPs Interview Questions and Answers — interactive study guide covering Constructor, Encapsulation, Abstraction, Inheritance, Polymorphism, and more</h2>
+
+<div style="padding:1rem 0">
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem" id="topics"></div>
+<div id="qlist"></div>
+</div>
+
+<script>
+const data = {
+  "Constructor": [
+    {q:"How will you call a parameterless constructor? Write one example.",a:`A parameterless (default) constructor takes no arguments. You call it simply using <code>new ClassName()</code>.`,code:`class Student {
+  String name;
+  Student() {          // parameterless constructor
+    name = "Unknown";
+  }
+}
+Student s = new Student(); // calling it`},
+    {q:"How will you call a parameterized constructor? Write one example.",a:`A parameterized constructor accepts arguments. Pass values while creating the object.`,code:`class Student {
+  String name;
+  Student(String n) {  // parameterized constructor
+    name = n;
+  }
+}
+Student s = new Student("Jyothi"); // calling it`},
+    {q:"Can we have a private constructor?",a:`Yes. A private constructor restricts object creation from outside the class. Used in Singleton pattern.`,code:`class Singleton {
+  private static Singleton obj;
+  private Singleton() {}   // private constructor
+  public static Singleton getInstance() {
+    if(obj == null) obj = new Singleton();
+    return obj;
+  }
+}`},
+    {q:"Can I override a constructor?",a:`No. Constructors cannot be overridden because they are not inherited. Every class must define its own constructor.`,code:null},
+    {q:"Can I overload a constructor?",a:`Yes! You can have multiple constructors with different parameters in the same class.`,code:`class Box {
+  Box() { System.out.println("No args"); }
+  Box(int l) { System.out.println("One arg: "+l); }
+  Box(int l, int b) { System.out.println("Two args"); }
+}`},
+    {q:"Why can't we override a constructor?",a:`Constructors are not inherited by child classes, so overriding (which requires inheritance) doesn't apply. A constructor's name must match the class name, so a parent constructor can never exist in a child class.`,code:null},
+    {q:"How will you call a parent class constructor with no parameters?",a:`Using <code>super()</code> as the first statement in the child constructor.`,code:`class Animal {
+  Animal() { System.out.println("Animal created"); }
+}
+class Dog extends Animal {
+  Dog() {
+    super();  // calls Animal()
+    System.out.println("Dog created");
+  }
+}`},
+    {q:"How will you call a parent class constructor with parameters?",a:`Using <code>super(value)</code> with the matching arguments.`,code:`class Animal {
+  Animal(String name) { System.out.println("Animal: "+name); }
+}
+class Dog extends Animal {
+  Dog(String name) {
+    super(name);  // calls Animal(String)
+  }
+}`},
+    {q:"How will you call the same class constructor from another constructor?",a:`Using <code>this()</code> — called constructor chaining within the same class.`,code:`class Box {
+  int l, b, h;
+  Box() { this(1, 1, 1); }       // calls Box(int,int,int)
+  Box(int l, int b, int h) {
+    this.l=l; this.b=b; this.h=h;
+  }
+}`},
+    {q:"Will it give a compile-time error if we give a return type to a constructor?",a:`No compile error — but it stops being a constructor and becomes a regular method! Java treats it as a method with the same name as the class, which is legal but unusual.`,code:`class A {
+  void A() { }   // This is a METHOD, not a constructor!
+  A() { }        // This is the actual constructor
+}`},
+    {q:"In inheritance, which class constructor is executed first?",a:`The parent class constructor always executes first, then the child class constructor. This is because <code>super()</code> is implicitly called as the first line in any child constructor.`,code:`class A { A() { System.out.println("A"); } }
+class B extends A { B() { System.out.println("B"); } }
+new B(); // Output: A  then  B`},
+    {q:"Is the constructor inherited to the child class?",a:`No. Constructors are NOT inherited. A child class must define its own constructor. However, you can call a parent constructor using <code>super()</code>.`,code:null},
+    {q:"public class A { private A() {} } — What is the correct way to create an object?",a:`You cannot create an object directly from outside the class. You need a static factory method inside A.`,code:`public class A {
+  private A() {}
+  public static A create() {
+    return new A();   // only inside the class
+  }
+}
+A obj = A.create();  // correct way`},
+    {q:"public class A { public A(int i) {} } — Does the compiler supply a default constructor?",a:`No. The compiler only supplies a default (no-arg) constructor when NO constructor is defined. Since A already has a parameterized constructor, the compiler will NOT add a default one.`,code:null},
+    {q:"Will this code compile successfully?\npublic class B extends A { public B(int i) {} }",a:`No — compile error! A only has A(int i), so its no-arg constructor doesn't exist. When B's constructor runs, it implicitly calls super() (no-arg), which doesn't exist in A.`,code:`// Fix: explicitly call super(i)
+public class B extends A {
+  public B(int i) {
+    super(i);  // explicitly call A(int)
+  }
+}`},
+  ],
+  "Encapsulation": [
+    {q:"Give a real project scenario where you implemented encapsulation.",a:`In the Bank Management System, the account balance was kept private. No external code could directly modify it. Only deposit() and withdraw() methods (with validation) could change the balance — ensuring data integrity.`,code:`class BankAccount {
+  private double balance;  // hidden from outside
+  public void deposit(double amt) {
+    if(amt > 0) balance += amt;
+  }
+  public double getBalance() { return balance; }
+}`},
+    {q:"What is the use of encapsulation?",a:`Encapsulation protects data from unauthorized access and modification. It bundles data and methods together, provides control over data via validation in setters, and improves maintainability.`,code:null},
+    {q:"Which OOP feature achieves data security / data hiding?",a:`Encapsulation achieves data hiding, using the private access modifier to restrict direct access to variables.`,code:null},
+    {q:"How will you hide data from the external world using encapsulation?",a:`Declare all variables as private inside a Bean class. Provide public getter and setter methods to access and update them. No external code can touch the variable directly.`,code:`// Bean class example
+class Employee {
+  private int id;
+  private String name;
+  public int getId() { return id; }
+  public void setId(int id) { this.id = id; }
+  public String getName() { return name; }
+  public void setName(String name) { this.name = name; }
+}`},
+    {q:"Which methods are used to achieve encapsulation?",a:`setter() and getter() methods. Setter sets the value (with optional validation), getter returns the value.`,code:null},
+    {q:"What is a Bean class?",a:`A Bean class is a Java class that: (1) has all private variables, (2) provides public getters and setters, (3) has a no-arg constructor, and (4) implements Serializable (optional). Used heavily in Spring Boot.`,code:null},
+    {q:"Write setter and getter methods for private int sno.",a:null,code:`class Student {
+  private int sno;
+  public void setSno(int sno) {  // setter
+    this.sno = sno;
+  }
+  public int getSno() {          // getter
+    return sno;
+  }
+}`},
+  ],
+  "Abstraction": [
+    {q:"How will you achieve abstraction in Java?",a:`Two ways: (1) Abstract class — partial abstraction, (2) Interface — full/100% abstraction.`,code:`// Abstract class
+abstract class Shape {
+  abstract void draw();    // abstract method
+  void display() { System.out.println("Shape"); } // concrete
+}
+// Interface
+interface Drawable {
+  void draw();  // 100% abstract
+}`},
+    {q:"Give one real-time example (not Java) of abstraction.",a:`ATM machine — you press 'Withdraw', enter amount, and get cash. You don't know the internal banking logic, network calls, or database operations happening behind the scenes. The complexity is hidden; only essential functionality is exposed.`,code:null},
+    {q:"Can we achieve 100% abstraction using abstract class? If not, why?",a:`No. An abstract class can have concrete (non-abstract) methods with a body. Since it can contain implementation, it cannot guarantee 100% abstraction. Only an Interface achieves 100% abstraction (before Java 8 — after Java 8, interfaces can have default/static methods too).`,code:null},
+  ],
+  "Inheritance": [
+    {q:"Can I inherit private variables of parent class in child class?",a:`Private variables are inherited (they exist in memory) but NOT directly accessible in the child class. You can access them via public getters/setters.`,code:`class A { private int x = 10; public int getX(){return x;} }
+class B extends A {
+  void show() {
+    // System.out.println(x); // ERROR - not accessible
+    System.out.println(getX()); // OK via getter
+  }
+}`},
+    {q:"What is the use of inheritance?",a:`Code reusability — child class reuses parent's fields and methods. It also enables method overriding and runtime polymorphism. Reduces code duplication.`,code:null},
+    {q:"Is the constructor inherited to child classes?",a:`No. Constructors are not inherited. But super() is implicitly called to run the parent's constructor.`,code:null},
+    {q:"Are final methods inherited to child classes?",a:`Yes! Final methods ARE inherited to child classes. But they cannot be overridden.`,code:null},
+    {q:"Can I call/access final methods from child class?",a:`Yes. Final methods are inherited and can be called from child class objects.`,code:`class A { final void show(){System.out.println("A");} }
+class B extends A {}
+new B().show(); // works fine`},
+    {q:"Can I override final methods in the child class?",a:`No. final methods cannot be overridden. Attempting to do so gives a compile-time error.`,code:null},
+    {q:"How do you call a parent class constructor from a child class?",a:`Using super() or super(args) as the first line in the child constructor.`,code:null},
+    {q:"What is the Object class?",a:`Object class (java.lang.Object) is the root/parent of all Java classes. Every class implicitly extends Object. It provides methods like toString(), hashCode(), equals(), clone(), wait(), notify().`,code:null},
+    {q:"If I don't want to inherit my class, what should I do?",a:`Declare the class as final. A final class cannot be extended.`,code:`final class MyClass { }
+// class Child extends MyClass { }  // ERROR!`},
+    {q:"Can I inherit a final class?",a:`No. A final class cannot be subclassed/extended.`,code:null},
+    {q:"Why doesn't Java support multiple inheritance?",a:`Because of the Diamond Problem — if two parent classes have the same method, the child class doesn't know which one to call, creating ambiguity. Java avoids this for classes but allows it via interfaces.`,code:null},
+    {q:"What is function ambiguity in Java? Show one example.",a:`When a child class inherits two methods with the same signature from two parents, it's unclear which to use — this is function ambiguity.`,code:`// Not possible with classes, but conceptually:
+class A { void show() {} }
+class B { void show() {} }
+// class C extends A, B {}  // ERROR - ambiguity`},
+    {q:"How will you achieve multiple inheritance in Java? Show one example.",a:`Through Interfaces. A class can implement multiple interfaces.`,code:`interface A { void methodA(); }
+interface B { void methodB(); }
+class C implements A, B {
+  public void methodA() { System.out.println("A"); }
+  public void methodB() { System.out.println("B"); }
+}`},
+    {q:"How many types of inheritance are there in Java?",a:`5 types: Single, Multilevel, Hierarchical, Multiple (via interfaces), Hybrid (via interfaces).`,code:null},
+    {q:"Which type of inheritance is not supported in Java?",a:`Multiple inheritance through classes is not supported. (Supported only via interfaces.)`,code:null},
+    {q:"What is the limitation/disadvantage of inheritance?",a:`Tight coupling — child class depends heavily on parent. Changes in parent can break child. Also, inheritance increases memory usage and makes code harder to maintain if overused.`,code:null},
+  ],
+  "Polymorphism": [
+    {q:"Give one example for static polymorphism.",a:`Method Overloading — same method name, different parameters. Resolved at compile time.`,code:`class Calculator {
+  int add(int a, int b) { return a+b; }
+  double add(double a, double b) { return a+b; }
+  int add(int a, int b, int c) { return a+b+c; }
+}`},
+    {q:"Give one example for dynamic polymorphism.",a:`Method Overriding — child class overrides parent's method. Resolved at runtime based on object type.`,code:`class Animal { void sound(){ System.out.println("Generic"); } }
+class Dog extends Animal {
+  void sound(){ System.out.println("Bark"); }
+}
+Animal a = new Dog();  // reference = Animal, object = Dog
+a.sound();             // Output: Bark  (runtime decision)`},
+  ],
+  "Method Overloading": [
+    {q:"If 2 methods have the same name, same parameters, but different return type — is it overloading or error?",a:`Compile-time ERROR. Return type alone is not enough to distinguish overloaded methods. Java uses method signature (name + parameter types), not return type.`,code:null},
+    {q:"Can I overload a constructor?",a:`Yes! Multiple constructors with different parameters = constructor overloading.`,code:`class Box {
+  Box(){}
+  Box(int l){}
+  Box(int l, int b, int h){}
+}`},
+    {q:"Can I overload static methods?",a:`Yes. Static methods can be overloaded just like instance methods.`,code:`class A {
+  static void show(int x){}
+  static void show(String s){}
+}`},
+    {q:"Can I overload final methods?",a:`Yes. Final methods can be overloaded (different parameters). They just cannot be overridden.`,code:`class A {
+  final void display(int x){}
+  final void display(String s){} // valid overloading
+}`},
+    {q:"How will you call overloaded methods?",a:`Java automatically picks the right method based on the arguments you pass.`,code:`class Demo {
+  void show(int x){ System.out.println("int: "+x); }
+  void show(String s){ System.out.println("String: "+s); }
+}
+Demo d = new Demo();
+d.show(5);      // calls show(int)
+d.show("Hi");  // calls show(String)`},
+  ],
+  "Method Overriding": [
+    {q:"Can I override private methods of parent class in child class?",a:`No. Private methods are not visible outside the parent class, so they cannot be overridden. If you define the same method in child, it's a brand new method, not an override.`,code:null},
+    {q:"Can I override abstract methods in child class?",a:`Yes — you MUST override all abstract methods in a concrete child class, otherwise the child class also becomes abstract.`,code:`abstract class Shape { abstract void draw(); }
+class Circle extends Shape {
+  void draw() { System.out.println("Drawing circle"); } // mandatory
+}`},
+    {q:"Can I override a parent class constructor in child class? Why?",a:`No. Constructors are not inherited, so they cannot be overridden. Overriding requires inheritance.`,code:null},
+    {q:"If I don't want to override a parent class method in child class, what should I do?",a:`Declare the method as final in the parent class. Final methods cannot be overridden.`,code:`class A { final void show(){ System.out.println("A"); } }
+class B extends A {
+  // void show(){} // ERROR - cannot override final
+}`},
+    {q:"Difference between private method and final method (both can't be overridden)?",a:`Private method: not visible/inherited at all in child class. If child defines same method — it's a new method. Final method: IS inherited and visible in child, can be called, but CANNOT be overridden.`,code:null},
+    {q:"Can I override parent class static methods in child class?",a:`No. Static methods belong to the class, not the object. You can define the same static method in child (called method hiding), but it's NOT overriding — it won't show polymorphic behavior.`,code:`class A { static void show(){ System.out.println("A"); } }
+class B extends A { static void show(){ System.out.println("B"); } }
+A obj = new B();
+obj.show(); // Output: A  (not B — no polymorphism for static)`},
+    {q:"How do you call a parent class overridden method from child class?",a:`Using <code>super.methodName()</code> inside the child class method.`,code:`class A { void show(){ System.out.println("Parent"); } }
+class B extends A {
+  void show(){
+    super.show();  // calls A's show()
+    System.out.println("Child");
+  }
+}`},
+  ],
+  "Static & Non-Static": [
+    {q:"How will you access static variables/methods of a class?",a:`Using the class name directly — no object needed.`,code:`class MathUtil {
+  static int PI = 3;
+  static int square(int x){ return x*x; }
+}
+System.out.println(MathUtil.PI);         // static variable
+System.out.println(MathUtil.square(4)); // static method`},
+    {q:"How will you access non-static variables/methods?",a:`Create an object of the class, then use the dot operator.`,code:`class Student {
+  int age = 20;
+  void display(){ System.out.println(age); }
+}
+Student s = new Student();
+s.display();         // non-static method
+System.out.println(s.age); // non-static variable`},
+    {q:"Which is faster — static methods or instance methods? Why?",a:`Static methods are slightly faster because they don't require object creation and JVM doesn't need dynamic dispatch. They are resolved at compile time.`,code:null},
+    {q:"Why is the main() method static?",a:`JVM calls main() before creating any object. If it were non-static, JVM would need an object to call it — but which object? Static allows JVM to call it directly using the class name.`,code:null},
+    {q:"Can I access non-static variables inside a static method?",a:`Not directly. You need to create an object of the class first.`,code:`class A {
+  int x = 10;           // non-static
+  static void show(){
+    // System.out.println(x); // ERROR
+    A obj = new A();
+    System.out.println(obj.x); // OK via object
+  }
+}`},
+  ],
+  "Abstract Class": [
+    {q:"If I have 0 abstract methods in a class, can I make that class abstract?",a:`Yes! You can declare a class as abstract even with zero abstract methods. This prevents object creation of that class.`,code:`abstract class Vehicle { // no abstract methods, still abstract
+  void start(){ System.out.println("Starting..."); }
+}
+// new Vehicle(); // ERROR`},
+    {q:"Can I create an object for an abstract class?",a:`No. Abstract classes cannot be instantiated directly. You must create a subclass and instantiate that.`,code:null},
+    {q:"How will you access methods (with bodies) of an abstract class?",a:`Create a subclass that extends the abstract class, then create an object of the subclass.`,code:`abstract class Animal { void breathe(){ System.out.println("Breathing"); } }
+class Dog extends Animal {}
+new Dog().breathe(); // OK`},
+    {q:"Can I have a constructor in an abstract class?",a:`Yes! Abstract classes can have constructors. They are called when a subclass object is created via super().`,code:null},
+    {q:"When will you use an abstract class? Give a scenario.",a:`When multiple related classes share common behavior but each must implement some methods differently. E.g. all shapes have area() but calculation differs.`,code:`abstract class Shape {
+  String color = "Red";       // common property
+  abstract double area();     // each shape calculates differently
+  void display(){ System.out.println("Color: "+color); }
+}
+class Circle extends Shape {
+  double r;
+  Circle(double r){ this.r=r; }
+  public double area(){ return 3.14*r*r; }
+}`},
+    {q:"When will you use an abstract method? Give a scenario.",a:`When you want to force all subclasses to provide their own implementation of a method. E.g. every payment method must implement pay().`,code:`abstract class Payment {
+  abstract void pay(double amount); // every subclass MUST implement
+}
+class CreditCard extends Payment {
+  public void pay(double amount){ System.out.println("CC: "+amount); }
+}
+class UPI extends Payment {
+  public void pay(double amount){ System.out.println("UPI: "+amount); }
+}`},
+    {q:"Can I achieve full/complete abstraction with abstract class? Why not?",a:`No. Abstract class can have concrete methods (with body), which means it exposes implementation details. Full abstraction = only abstract methods, no implementation = Interface.`,code:null},
+    {q:"Can I make an abstract class as a final class?",a:`No! abstract means must be subclassed, final means cannot be subclassed — they directly contradict each other. Compile error.`,code:null},
+  ],
+  "Interface": [
+    {q:"What is the use of interface? Give a scenario with code.",a:`Interface is used when you want multiple unrelated classes to follow the same contract. E.g. Printable interface — both Document and Image can implement it.`,code:`interface Printable {
+  void print();
+}
+class Document implements Printable {
+  public void print(){ System.out.println("Print Doc"); }
+}
+class Photo implements Printable {
+  public void print(){ System.out.println("Print Photo"); }
+}`},
+    {q:"Does interface support multiple inheritance? Show code.",a:`Yes! A class can implement multiple interfaces — this is how Java achieves multiple inheritance.`,code:`interface A { void methodA(); }
+interface B { void methodB(); }
+class C implements A, B {
+  public void methodA(){ System.out.println("A"); }
+  public void methodB(){ System.out.println("B"); }
+}`},
+    {q:"What is the access specifier used for members of interfaces?",a:`All variables in an interface are implicitly public static final. All methods are implicitly public abstract (before Java 8). You don't need to write these keywords explicitly.`,code:null},
+    {q:"Can we achieve full abstraction with an interface? Why?",a:`Yes (before Java 8). All methods were abstract by default — no implementation. After Java 8, default and static methods were added, so it's technically partial, but conceptually interfaces still represent full abstraction.`,code:null},
+    {q:"Can I implement multiple interfaces in a class?",a:`Yes — use commas to separate them.`,code:`class MyClass implements Interface1, Interface2, Interface3 { ... }`},
+    {q:"Give one real-world example of interface (not Java).",a:`A USB port is an interface. Any device (mouse, keyboard, pendrive, charger) can connect to it as long as it follows the USB standard contract. The laptop doesn't care which device — as long as it follows the interface.`,code:null},
+    {q:"Can one interface inherit another interface?",a:`Yes — use extends keyword between interfaces.`,code:`interface A { void methodA(); }
+interface B extends A { void methodB(); }
+class C implements B {
+  public void methodA(){}
+  public void methodB(){}
+}`},
+    {q:"How will you implement an interface and call its methods?",a:`Use implements keyword in the class, provide implementation for all methods, then create an object.`,code:`interface Greet { void sayHello(); }
+class English implements Greet {
+  public void sayHello(){ System.out.println("Hello!"); }
+}
+Greet g = new English();
+g.sayHello(); // Output: Hello!`},
+  ],
+  "Access Specifier": [
+    {q:"Can I access protected variables in other packages?",a:`Yes — but only through inheritance. A subclass in another package can access protected members. Direct access (without extending) is not allowed in another package.`,code:null},
+    {q:"Can I access private variables in other classes?",a:`No. Private variables are accessible only within the same class. Use getters/setters to expose them.`,code:null},
+    {q:"Which access specifier is used for data security?",a:`private — it restricts access to only within the class, providing maximum data security.`,code:null},
+    {q:"Difference between protected and default.",a:`Default: accessible within the same package only. Protected: accessible within same package + subclasses in other packages (via inheritance).`,code:null},
+  ],
+  "Exceptions": [
+    {q:"What is a checked exception? Give one example.",a:`Checked exceptions are checked at compile time. The compiler forces you to handle them. E.g. IOException, SQLException, FileNotFoundException.`,code:`import java.io.*;
+void readFile() throws IOException {
+  FileReader f = new FileReader("file.txt"); // must handle
+}`},
+    {q:"What is an unchecked exception? Give one example.",a:`Unchecked exceptions occur at runtime. Compiler doesn't force you to handle them. They extend RuntimeException. E.g. NullPointerException, ArrayIndexOutOfBoundsException.`,code:`int[] arr = new int[3];
+arr[10] = 5; // ArrayIndexOutOfBoundsException at runtime`},
+    {q:"If I don't want to handle an exception, what should I do?",a:`Use throws keyword to declare the exception — pass the responsibility to the calling method.`,code:`void readFile() throws IOException {
+  // don't handle here, caller must handle
+  FileReader f = new FileReader("test.txt");
+}`},
+    {q:"If I use throws and an exception occurs, who handles it?",a:`The calling method must handle it using try-catch. If the caller also uses throws, it goes up the call stack. If no one handles it, the JVM terminates the program.`,code:null},
+    {q:"What is the use of throw? Give an example.",a:`throw is used to explicitly throw an exception — either a built-in or custom one.`,code:`void checkAge(int age) {
+  if(age < 18)
+    throw new IllegalArgumentException("Not eligible");
+}`},
+    {q:"How will you create a custom exception?",a:`Extend Exception (for checked) or RuntimeException (for unchecked).`,code:`class InsufficientFundsException extends Exception {
+  InsufficientFundsException(String msg){ super(msg); }
+}
+void withdraw(double amt) throws InsufficientFundsException {
+  if(amt > balance)
+    throw new InsufficientFundsException("Low balance!");
+}`},
+    {q:"What happens if an exception occurs in the finally block?",a:`If an exception occurs inside finally, it overrides the original exception and propagates up. The remaining statements in finally are skipped.`,code:null},
+    {q:"If we use System.exit(), will the finally block execute?",a:`No! System.exit() terminates the JVM immediately. The finally block will NOT execute in this case.`,code:`try {
+  System.exit(0);  // JVM stops here
+} finally {
+  System.out.println("This won't print");
+}`},
+  ],
+  "Collections & Generics": [
+    {q:"What is the use of collections?",a:`Collections provide ready-made data structures (List, Set, Map, Queue) to store, retrieve, manipulate and communicate group of objects. Unlike arrays, they are dynamic in size.`,code:null},
+    {q:"Difference between array and collections.",a:`Array: fixed size, can hold primitives, no built-in methods. Collections: dynamic size, holds only objects, rich API (add, remove, sort, search), part of java.util.`,code:null},
+    {q:"In which Java version were collections introduced?",a:`Java 1.2 (JDK 1.2).`,code:null},
+    {q:"Difference between collections and generics.",a:`Collections: framework of data structures. Generics (Java 5): allow type-safe collections — you specify what type a collection holds, preventing ClassCastException at runtime.`,code:`List<String> list = new ArrayList<>(); // generics - type safe
+list.add("Hello");
+// list.add(10); // compile error`},
+    {q:"Why are generics safe?",a:`Generics enforce type checking at compile time. Without generics, you'd get ClassCastException at runtime. With generics, wrong types are caught during compilation.`,code:null},
+    {q:"Difference between LinkedList and ArrayList — which is best?",a:`ArrayList: backed by array, fast random access O(1), slow insert/delete in middle. LinkedList: doubly linked, fast insert/delete O(1), slow random access O(n). Neither is always better — depends on use case.`,code:null},
+    {q:"In which case is LinkedList better?",a:`When you frequently insert or delete elements from the beginning or middle of the list. E.g. implementing a queue or deque.`,code:null},
+    {q:"Difference between Vector and ArrayList.",a:`Vector: synchronized (thread-safe), slower, legacy class. ArrayList: not synchronized, faster, preferred for single-threaded apps.`,code:null},
+    {q:"Difference between Hashtable and HashMap.",a:`Hashtable: synchronized, thread-safe, no null keys/values, legacy. HashMap: not synchronized, allows one null key and multiple null values, faster.`,code:null},
+    {q:"Difference between List and Set (ArrayList vs Set).",a:`List: ordered, allows duplicates, index-based access. Set: unordered (except LinkedHashSet), NO duplicates allowed.`,code:null},
+    {q:"Difference between Set and Map.",a:`Set: stores only keys/values (single object), no duplicates. Map: stores key-value pairs, keys must be unique but values can duplicate.`,code:null},
+    {q:"Difference between array and List.",a:`Array: fixed size, primitive support, no methods. List: dynamic, object only, rich methods (add, remove, contains etc.).`,code:null},
+    {q:"Difference between List and Map.",a:`List: sequential collection of single objects with index. Map: collection of key-value pairs, accessed by key (not index).`,code:null},
+  ],
+  "Memory & Threads": [
+    {q:"How many parts are there in memory?",a:`JVM memory has 5 parts: Heap (objects), Stack (method calls/local vars), Method Area/Metaspace (class info), PC Register, Native Method Stack.`,code:null},
+    {q:"What is stored in stack?",a:`Local variables, method call frames, references to heap objects. Each method call creates a new stack frame. Stack is LIFO. Automatically cleared when method returns.`,code:null},
+    {q:"What is stored in heap?",a:`All objects (created with new keyword) and instance variables are stored in heap. Heap is managed by garbage collector.`,code:null},
+    {q:"What is a garbage collector?",a:`GC is a JVM background process that automatically finds and deletes unreferenced objects from heap memory to free up space. You don't need to manually free memory (unlike C/C++).`,code:null},
+    {q:"What is the meaning of unreferenced objects?",a:`An object that has no reference variable pointing to it. GC targets these for deletion. E.g. obj = null makes the previous object unreferenced.`,code:`Student s = new Student(); // referenced
+s = null;  // now the Student object is unreferenced -> GC candidate`},
+    {q:"What is hashcode?",a:`An integer value returned by hashCode() method, used to identify an object's bucket location in hash-based collections (HashMap, HashSet). Objects that are equal must have the same hashCode.`,code:null},
+    {q:"What is synchronization?",a:`Synchronization ensures only one thread can access a shared resource at a time, preventing data inconsistency. Done using the synchronized keyword.`,code:`synchronized void deposit(int amt){ balance += amt; }`},
+    {q:"What is thread priority?",a:`Each thread has a priority (1-10). MIN_PRIORITY=1, NORM_PRIORITY=5, MAX_PRIORITY=10. JVM uses this as a hint for scheduling (not guaranteed).`,code:null},
+    {q:"What is the main thread?",a:`The main thread is the thread that JVM creates to execute the main() method. All other threads are spawned from it.`,code:null},
+    {q:"What is setPriority?",a:`setPriority(int) method sets a thread's priority. Use Thread.MIN_PRIORITY (1), NORM_PRIORITY (5), or MAX_PRIORITY (10).`,code:`Thread t = new Thread(() -> System.out.println("Hi"));
+t.setPriority(Thread.MAX_PRIORITY);
+t.start();`},
+    {q:"What is JRE vs JDK?",a:`JRE (Java Runtime Environment): JVM + libraries — used to RUN Java programs. JDK (Java Development Kit): JRE + compiler (javac) + tools — used to DEVELOP Java programs.`,code:null},
+    {q:"What is the use of stack and heap?",a:`Stack: stores method calls and local variables, fast access, auto-managed. Heap: stores all objects, larger, managed by GC. Together they handle Java's runtime memory.`,code:null},
+    {q:"What is the current version of Java?",a:`As of 2026, the latest LTS version is Java 21 (released Sept 2023). Java 22 and 23 are also available as non-LTS releases.`,code:null},
+    {q:"What is clone()?",a:`clone() (from Object class) creates and returns a copy of the object. The class must implement Cloneable interface, otherwise CloneNotSupportedException is thrown.`,code:`class A implements Cloneable {
+  int x = 10;
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+}`},
+    {q:"What is the Serializable interface?",a:`Serializable (java.io.Serializable) is a marker interface. It allows objects to be converted to a byte stream (serialized) to save to file or send over network, and reconstructed back (deserialized).`,code:`class Student implements Serializable {
+  int id;
+  String name;
+}`},
+    {q:"== vs equals()",a:`== compares references (memory address) — are they the same object? equals() compares content/value — are they logically equal?`,code:`String a = new String("Java");
+String b = new String("Java");
+System.out.println(a == b);       // false (different objects)
+System.out.println(a.equals(b));  // true  (same content)`},
+  ]
+};
+
+const topicEl = document.getElementById("topics");
+const qlistEl = document.getElementById("qlist");
+let currentTopic = null;
+
+Object.keys(data).forEach((topic, i) => {
+  const btn = document.createElement("button");
+  btn.className = "topic-btn" + (i===0?" active":"");
+  btn.textContent = topic;
+  btn.onclick = () => {
+    document.querySelectorAll(".topic-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderQuestions(topic);
+  };
+  topicEl.appendChild(btn);
+});
+
+function renderQuestions(topic) {
+  currentTopic = topic;
+  qlistEl.innerHTML = "";
+  data[topic].forEach((item, idx) => {
+    const div = document.createElement("div");
+    div.className = "q-item";
+    div.innerHTML = `
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">Q${idx+1}</span>
+        <span class="q-text">${item.q.replace(/\n/g,"<br>")}</span>
+        <i class="ti ti-chevron-down q-arrow" aria-hidden="true"></i>
+      </div>
+      <div class="q-body">
+        ${item.a ? `<p class="q-answer">${item.a}</p>` : ""}
+        ${item.code ? `<pre>${escHtml(item.code)}</pre>` : ""}
+      </div>`;
+    qlistEl.appendChild(div);
+  });
+}
+
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector(".q-arrow");
+  const open = body.classList.toggle("open");
+  arrow.style.transform = open ? "rotate(180deg)" : "";
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+renderQuestions(Object.keys(data)[0]);
+</script>
