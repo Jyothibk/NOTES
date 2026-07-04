@@ -1,0 +1,221 @@
+For more details/referral lets meet on linkedin: Kanak Agrawal - Salesforce | LinkedIn
+
+Java Resources ➖
+Shrayansh jain core java
+Java techie Core java
+Multithreading 
+Multithreading coding related ques
+Internal workings
+SOLID Principles 
+JVM internals 
+Java8 Interview FAQ
+Code decode - (for mock interview practise)
+
+Crash course ➖
+Spring 
+Spring boot
+Spring Data JPA
+Kafka Crash Course
+JUnit 
+Docker
+Kubernetes
+
+
+
+Spring boot interview prep :-  
+Java Techie :- watch all 7 videos 
+Code Decode  :-  for self mock interview practise
+Shrayansh Jain :- for more conceptual learning of actual concepts
+
+
+
+Mini Projects :- 
+1) Paypal Clone with microservice architecture (V Good)
+2) Threadboost (a project showcasing performance difference in a CRUD controller based on single threaded controller and multithreaded controllers) :-
+Github 
+3) Saga Pattern 
+4) Outbox pattern
+5) Spring Security Crash course with JWT tutorial
+3) Inventory Management system (A springboot project with Kafka integration) : -
+Github  
+
+
+
+
+
+
+
+
+
+
+DSA Prep :
+IMP : - POTD to be done daily along with the normal prep
+Phase 1 :- Striver A2Z  
+Neetcode 150 video solution 
+
+Phase 2 :- Non standard DSA prep 
+Aryan mittal 
+Code story with Mik
+DP vivek gupta 
+Binary search 
+
+
+Phase 3 : Interview Prep :- Let us assume you have an upcoming interview at Uber
+      0)  Post a query on leetcode discuss section that you have an upcoming interview, mention Company name, position, YOE, most likely people who have been through the process will reply with their insights and guidance :- Example 
+Go to leetcode discuss and select the company Tag as Uber: https://leetcode.com/discuss/
+Start creating excel sheet of all the useful interview experience in the last 6-12 months, and start collating all the useful data such as 
+which DSA, LLD, HLD ques are repeatedly asked and try to identify company specific pattern gather information whether in DSA, if complete working solution is req or pseudo code , for lld complete working solution is req or pseudo code or UML diagrams, HLD what are the expectations
+Get leetcode premium and try to do atleast last 3months most FAQ
+
+
+
+Optional DSA Resources : 
+Google Interview Prep Material Compilation
+1) 2023 - early 2025
+2) 2020 - 2022
+
+Meta Interview Prep 
+V Good List 
+Graph all leetcode problems
+2Pointers all leetcode problems
+All DP leetcode problems
+DP Pattern wise problemset
+Arrays
+String 
+Line sweep
+Prefix Sum
+BFS 
+Greedy
+N-ary Tree
+Tree
+Stacks Queue
+Binary Search
+Priority queue
+Interval problems
+Tree - II
+Stacks - II
+Sliding window
+Sliding Window - II
+Substring pattern
+Backtracking
+Monotonic Stack
+BitManipulation
+Complete DP Problems & Resources Guide
+Complete Graph Problems & Resources Guide
+13 DP Patterns for Interview Preparation
+10 Dijkstra Variations for Interview Preparation
+10 Essential Design Problems for DSA Interviews
+Essential CS Fundamental Topics For Interviews
+Essential Graph Patterns for Coding Interviews
+Essential String Patterns for Coding Interviews
+15 Essential DSA Patterns for Tech Interviews
+The 10 Variations of Two Pointers for Interview Preparation
+
+Behavioural Ques to Prepare 
+
+System Design :- 
+LLD : 
+Github repo 
+https://github.com/donnemartin/system-design-primer
+Youtube Playlist :- 
+aryan mittal
+shrayansh jain 
+
+
+HLD
+Github Repo For Ashish Pratap System Design
+Youtube Playlist ➖
+shrayansh jain
+hello interview 
+interview with bunny
+
+Job Opportunities
+Linkedin profile should always be updated and optimised with Proper Headline, Work exp etc and get Linkedin profile score above 70 (https://resumeworded.com/linkedin-review/upload-linkedin)
+why do this? helps recruiters to notice your profile and they start reaching you out
+Make open to work in linkedin and put your preference for location and availability
+every morning at 9AM, do any minor changes on your linkedin profile to get noticed more!!
+Youtube video for linkedin optimisation 
+https://www.youtube.com/watch?v=eL_6dyc-8hY&t=1676s :- linkedin and naukri profile optimisation
+
+And a lot more HR’s reached out directly on linkedin!!
+Same goes for Naukri profile Optimisation 
+cold msg and email template : 
+Hi [REC_NAME}, I am very keen to contribute at [COMPANY_NAME] in your team for [POSITION]
+With [YOUR_YOE] 𝐲𝐞𝐚𝐫𝐬 𝐨𝐟 𝐞𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞 𝐰𝐨𝐫𝐤𝐢𝐧𝐠 𝐢𝐧 [CURRENT_TEAM] 𝐭𝐞𝐚𝐦𝐬 for [CURRENT_ORG_NAME], I have a strong background in delivering rapid features with 𝐡𝐢𝐠𝐡 𝐬𝐜𝐚𝐥𝐚𝐛𝐢𝐥𝐢𝐭𝐲 𝐚𝐧𝐝 𝐫𝐞𝐬𝐢𝐥𝐢𝐞𝐧𝐜𝐞.
+I am well-versed in 𝐉𝐚𝐯𝐚𝟖+, 𝐒𝐩𝐫𝐢𝐧𝐠 𝐁𝐨𝐨𝐭, 𝐊𝐚𝐟𝐤𝐚, 𝐑𝐞𝐝𝐢𝐬 ,𝐝𝐨𝐜𝐤𝐞𝐫, 𝐤𝐮𝐛𝐞𝐫𝐧𝐞𝐭𝐞𝐬, CICD,  𝐞𝐯𝐞𝐧𝐭-𝐝𝐫𝐢𝐯𝐞𝐧 𝐬𝐲𝐬𝐭𝐞𝐦𝐬, 𝐚𝐧𝐝 𝐝𝐢𝐬𝐭𝐫𝐢𝐛𝐮𝐭𝐞𝐝 𝐬𝐲𝐬𝐭𝐞𝐦𝐬. I also have strong knowledge of 𝐋𝐋𝐃 and 𝐇𝐋𝐃 architecture, with active contributions to my current team.
+Additionally, I have solved 𝟏𝟎𝟎𝟎+ 𝐃𝐒𝐀 problems, showcasing my problem-solving skills.
+Leetcode Link : 
+Github Link :
+Linkedin profile link : 
+Looking forward to hearing from you!
+Best regards,
+Name
+Email
+Ph Number
+Attach Resume
+
+Referral Template : 
+Hi [NAME], could you pls help with a referral. I am very keen to contribute at [COMPANY_NAME] for [POSITION] (JOB_ID/JOB_LINK) 
+With [YOUR_YOE] 𝐲𝐞𝐚𝐫𝐬 𝐨𝐟 𝐞𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞 𝐰𝐨𝐫𝐤𝐢𝐧𝐠 𝐢𝐧 [CURRENT_TEAM] 𝐭𝐞𝐚𝐦𝐬 for [CURRENT_ORG_NAME], I have a strong background in delivering rapid features with 𝐡𝐢𝐠𝐡 𝐬𝐜𝐚𝐥𝐚𝐛𝐢𝐥𝐢𝐭𝐲 𝐚𝐧𝐝 𝐫𝐞𝐬𝐢𝐥𝐢𝐞𝐧𝐜𝐞.
+I am well-versed in 𝐉𝐚𝐯𝐚𝟖+, 𝐒𝐩𝐫𝐢𝐧𝐠 𝐁𝐨𝐨𝐭, 𝐊𝐚𝐟𝐤𝐚, 𝐑𝐞𝐝𝐢𝐬 ,𝐝𝐨𝐜𝐤𝐞𝐫, 𝐤𝐮𝐛𝐞𝐫𝐧𝐞𝐭𝐞𝐬, CICD, 𝐞𝐯𝐞𝐧𝐭-𝐝𝐫𝐢𝐯𝐞𝐧 𝐬𝐲𝐬𝐭𝐞𝐦𝐬, 𝐚𝐧𝐝 𝐝𝐢𝐬𝐭𝐫𝐢𝐛𝐮𝐭𝐞𝐝 𝐬𝐲𝐬𝐭𝐞𝐦𝐬. I also have strong knowledge of 𝐋𝐋𝐃 and 𝐇𝐋𝐃 architecture, with active contributions to my current team.
+Additionally, I have solved 𝟏𝟎𝟎𝟎+ 𝐃𝐒𝐀 problems, showcasing my problem-solving skills.
+Leetcode Link : 
+Github Link :
+Linkedin profile link : 
+Looking forward to hearing from you!
+Best regards,
+Name
+Email
+Ph Number
+Attach Resume
+
+
+
+
+Create multiple linkedin Job alerts based on location, work exp, frontend eng/backend end/platform eng and also company specific alerts
+Go to LinkedIn → Jobs
+Enter your full Boolean search in the Search Jobs box ("Backend Engineer" OR "Software Engineer" OR "Platform Engineer") AND (microservices OR "distributed systems" OR "high scalability") AND (Kafka OR Redis OR "event driven" OR CQRS")
+Set Location = India
+Apply any extra filters (optional)
+If you want: Experience Level → Mid-Senior / 5–10 years
+Job Type → Full-time
+On-site / Remote / Hybrid
+Open the search results
+Click “Create Job Alert” at the top
+Set Frequency = Daily and Save
+similarly create multiple alerts based on location, domain etc
+
+Search company name in linkedin search bar and send requests, linkedin has a limit every week which gets refilled every Sunday, so make sure to send requests to multiple people in the company you are targeting.
+
+
+Use Instahyre to apply aggressively.
+
+
+Spend 30 mins on leetcode discuss interview section to read interview experiences, this will also give an idea of companies actively hiring and learn more about company specific interview patterns ( https://leetcode.com/discuss/topic/interview/ )
+
+
+ Resume template : https://www.overleaf.com/read/prhckhmzjqkk#08768a , resume ats score should be above 70, https://resumeworded.com/upload-resume.php -> upload resume here to check score
+
+Negotiation Phase
+Compare Level and Compensation on leetcode discuss and levels.fyi
+Post your compensation in the leetcode community and levels.fyi and ask people for their suggestions, and the salary band for the position you are being offered.
+Getting multiple offers before resignation is a must.
+
+Clarity on Product and the Team that you are joining is Must. Get useful information about WLB, tech stack, etc through junior/senior engineers working on the same team.
+
+Optional Links :- 
+DDIA Youtube videos 
+Alex XU Github Link
+Good read about kafka
+More on Kafka ➖
+https://mohitmishra786.github.io/TheCoreDump/posts/Why-does-Kafka-use-long-polling-instead-of-websockets/
+https://cwiki.apache.org/confluence/display/KAFKA/KIP-429%3A+Kafka+Consumer+Incremental+Rebalance+Protocol
+https://tinyurl.com/2n352xj8
+https://tinyurl.com/2eebdb5s,
+ https://tinyurl.com/3kfxaku7,
+ https://tinyurl.com/2vk8hxek
+
+
+JVM Deep Dive : https://www.youtube.com/playlist?list=PLL7QpTxsA4seLTaTLajyCTYAYV-Cra0T1
+
+
